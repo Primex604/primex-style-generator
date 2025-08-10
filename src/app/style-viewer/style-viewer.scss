@@ -1,0 +1,48 @@
+:host{
+    height: 100%;
+    width: 100%;
+    
+    .container{
+        height: 100%;
+        width: 100%;
+        display: grid;
+        grid-template-columns: 60% 40%;
+
+        .left-column{
+            height: 100%;
+            width: 100%;
+
+            .grid{
+                position: relative;
+                margin: 50px;
+                border: 1px solid black;
+                height: 100%;
+                background-color: #fff;
+                background-size: 10px 10px, 30px 30px;
+                background-image: 
+                    linear-gradient(to bottom, transparent 5px, #fff 5px),
+                    linear-gradient(to right, #ddd 1px, transparent 1px),
+                    linear-gradient(to right, transparent 5px, #fff 5px),
+                    linear-gradient(to bottom, #ddd 1px, transparent 1px)
+                ;
+                display: flex;
+
+                .editable-div{
+                    position: absolute;
+                    height: 60vh;
+                    width: 60vh;
+                    top: 22vh;
+                    left: 22vh;
+                    background-color: rgba($color: rebeccapurple, $alpha: 0.4);
+                    clip-path: var(--clipPath);
+                    filter: var(--filter);
+                    mask: var(--mask);
+                }
+            }
+
+        }
+        .options{
+            margin: 50px;
+        }
+    }
+}
