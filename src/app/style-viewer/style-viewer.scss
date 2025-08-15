@@ -6,7 +6,7 @@
         height: 100%;
         width: 100%;
         display: grid;
-        grid-template-columns: 60% 40%;
+        grid-template-columns: 50% 50%;
 
         .left-column{
             height: 100%;
@@ -16,7 +16,8 @@
                 position: relative;
                 margin: 50px;
                 border: 1px solid black;
-                height: 100%;
+                height: 90vh;
+                aspect-ratio: 1;
                 background-color: #fff;
                 background-size: 10px 10px, 30px 30px;
                 background-image: 
@@ -26,13 +27,44 @@
                     linear-gradient(to bottom, #ddd 1px, transparent 1px)
                 ;
                 display: flex;
+                justify-content: center;
+                align-items: center;
+
+                >p{
+                    margin: 0;
+                    position: absolute;
+                    z-index: 1;
+                }
+                :nth-child(1){
+                    left: 0;
+                    top: 0;
+                }
+                :nth-child(2){
+                    right: 0;
+                    top: 0;
+                }
+                :nth-child(3){
+                    right: 0;
+                    bottom: 0;
+                }
+                :nth-child(4){
+                    left: 0;
+                    bottom: 0;
+                }
+
+                .border{
+                    position: absolute;
+                    margin-top: 0.4vh;
+                    margin-left: 0.4vh;
+                    height: 83vh;
+                    width: 83vh;
+                    border: 1px solid gray;
+                }
 
                 .editable-div{
                     position: absolute;
-                    height: 60vh;
-                    width: 60vh;
-                    top: 22vh;
-                    left: 22vh;
+                    height: 100%;
+                    width: 100%;
                     background-color: rgba($color: rebeccapurple, $alpha: 0.4);
                     clip-path: var(--clipPath);
                     filter: var(--filter);
@@ -43,6 +75,54 @@
         }
         .options{
             margin: 50px;
+            position: relative;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+
+            .option{
+                height: 120px;
+                width: 100px;
+                border: 1px solid black;
+                border-radius: 10px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                cursor: pointer;
+
+                h3{
+                    width: 100%;
+                    margin: 0;
+                    margin-bottom: 10px;
+                    border-bottom: 1px solid black;
+                }
+                .sample{
+                    position: relative;
+                    height: 65%;
+                    width: 75%;
+                    border: 1px solid black;
+                }
+                .inset{
+                    clip-path: inset(10%);
+                    background-color: orange;
+                }
+                .circle{
+                    clip-path: circle(40%);
+                    background-color: orange;
+                }
+                .ellipse{
+                    clip-path: ellipse(20% 40%);
+                    background-color: orange;
+
+                }
+                .polygon{
+                    clip-path: polygon(50% 15%, 90% 48%, 72% 90%, 28% 90%, 10% 48%);
+                    background-color: orange;
+                }
+            }
+            :hover{
+                background-color: rgba($color: darkgray, $alpha: 0.5);
+            }
         }
     }
 }

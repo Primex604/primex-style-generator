@@ -6,6 +6,21 @@ header{
     flex-direction: row;
     align-items: center;
 
+    .logo{
+        display: flex;
+        flex-direction: row;
+
+        .image{
+            position: relative;
+            i{
+                bottom: 15px;
+                right: 15px;
+                font-size: 25px;
+                position: absolute;
+            }
+        }
+    }
+
     .content{
         width: 90%;
         display: flex;

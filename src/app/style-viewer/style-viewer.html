@@ -1,13 +1,40 @@
 <div class="container">
     <div class="left-column">
         <div class="grid">
-            <div class="editable-div" [style.--clipPath]=""></div>
+            <p>x: 0, y: 0</p>
+            <p>x: 100, y: 0</p>
+            <p>x: 100, y: 100</p>
+            <p>x: 0, y: 100</p>
+            <div class="border">
+                <div class="editable-div" [ngStyle]="
+                    {
+                        '--clipPath': clipPath
+                    }
+                "></div>
+            </div>
         </div>
     </div>
-    <div class="options">
-        @for (option of styleOptions; track $index) {
-            <p>{{option.text}}</p>
-            <p>{{option.explanation}}</p>
-        }
+    <div class="right-column">
+        <div class="options">
+            @for (option of clipPathOptions; track $index) {
+                <div class="option" (click)="onClick(option.value)">
+                    <h3>{{option.mode}}</h3>
+                    <div [class]="'sample ' + option.mode "></div>
+                </div>
+            }
+        </div>
+        <div class="option-desc">
+            @switch (mode) {
+                @case (cpOptions.inset) {
+                    <Inset/>
+                }
+                @case (cpOptions.circle) {
+                    <Circle/>
+                }
+                @case (cpOptions.polygon) {
+                    <Polygon/>
+                }
+            }
+        </div>
     </div>
 </div>

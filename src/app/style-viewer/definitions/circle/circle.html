@@ -1,0 +1,77 @@
+<div class="container">
+    <div class="explanation">{{definition}}</div>
+    <div class="syntax">
+        <p>Circle(</p>
+        <button 
+            (click)="argSelect(radial_size.value)"
+            [ngClass]="{'selected': currentArg == radial_size.value}"
+        >
+            {{radial_size.syntax}}
+        </button>{{optional}}
+        <p> [ at </p>
+        <button 
+            (click)="argSelect(position.value)"
+            [ngClass]="{'selected': currentArg == position.value}"
+        >
+            {{position.syntax}}
+        </button>
+        ] {{optional}}
+        <p>)</p>
+    </div>
+    @if (level_1) {
+        <div class="syntax">
+            @switch (currentArg) {
+                @case (circleArgs.radial_size) {
+                    <p>radial-size</p>
+                    <span> : </span>
+                    @for (comp of radial_size.composition; track $index) {
+                        <button 
+                            (click)="displayExplanation(comp.value)"
+                            [ngClass]="{'selected': currentLvl1 == comp.value}"
+                        >
+                            {{comp.syntax}}
+                        </button>
+                        <span> | </span>
+                    }
+                }
+                @case (circleArgs.position) {
+                    
+                }
+            }
+        </div>
+    }
+    @if (level_1 && level_2) {
+        <div class="syntax">
+            @switch (currentLvl1) {
+                @case (radialSizeTypes.radial_extent) {
+                    <p>radial-extent</p>
+                    <span> : </span>
+                    @for (comp of radial_size.composition[radialSizeTypes.radial_extent].composition; track $index) {
+                        <button 
+                            (click)="selectOption(comp)"
+                            [ngClass]="{'selected': currentLvl2 == comp.value}"
+                        >
+                            {{comp.syntax}}
+                        </button>
+                    }
+                }
+                @case (radialSizeTypes.length) {
+                    <p>length [0,∞]</p>
+                    <span> : </span>
+                    <input id="length" type="number" min="0" max="150" [(ngModel)]="length" (change)="onChange(length())"/>
+                    <select id="length-type" [(ngModel)]="lengthUnit">
+                        @for (comp of radial_size.composition[radialSizeTypes.length].composition; track $index) {
+                            <option [value]="comp.unit">{{comp.unit}}</option>
+                        }
+                    </select>
+                }
+                @case (radialSizeTypes.length_percentage) {
+                    <p>length-percentage [0,∞]</p><span>{{'{2}'}}</span>
+                    <span> : </span>
+                    <input id="length-percentage" type="number" min="0" max="150" [defaultValue]="percentage()"/>
+                    <span> % </span>
+                }
+            }
+        </div>
+    }
+</div>
