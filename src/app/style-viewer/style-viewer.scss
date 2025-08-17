@@ -73,56 +73,8 @@
             }
 
         }
-        .options{
-            margin: 50px;
-            position: relative;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-around;
-
-            .option{
-                height: 120px;
-                width: 100px;
-                border: 1px solid black;
-                border-radius: 10px;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                cursor: pointer;
-
-                h3{
-                    width: 100%;
-                    margin: 0;
-                    margin-bottom: 10px;
-                    border-bottom: 1px solid black;
-                }
-                .sample{
-                    position: relative;
-                    height: 65%;
-                    width: 75%;
-                    border: 1px solid black;
-                }
-                .inset{
-                    clip-path: inset(10%);
-                    background-color: orange;
-                }
-                .circle{
-                    clip-path: circle(40%);
-                    background-color: orange;
-                }
-                .ellipse{
-                    clip-path: ellipse(20% 40%);
-                    background-color: orange;
-
-                }
-                .polygon{
-                    clip-path: polygon(50% 15%, 90% 48%, 72% 90%, 28% 90%, 10% 48%);
-                    background-color: orange;
-                }
-            }
-            :hover{
-                background-color: rgba($color: darkgray, $alpha: 0.5);
-            }
+        .right-column{
+            border-left: 1px solid black;
         }
     }
 }

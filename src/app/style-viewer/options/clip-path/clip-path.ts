@@ -1,19 +1,15 @@
 import { Component, inject } from '@angular/core';
-import { NgStyle } from '@angular/common';
+import { clipPathExamples, ClipPathOptions, StyleOptions } from 'cssDefs.enum';
 import { General } from 'services/general';
-import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { ClipPathOptions, clipPathExamples, StyleOptions } from 'cssDefs.enum';
-import { Header } from 'app/header/header';
-import { Expandable } from 'app/expandable/expandable';
-import { ClipPath, Filter } from './options';
+import { Inset, Circle, Polygon } from "./definitions";
 
 @Component({
-    selector: 'StyleViewer',
-    imports: [NgStyle, Header, Expandable, ClipPath, Filter],
-    templateUrl: './style-viewer.html',
-    styleUrl: './style-viewer.scss'
+	selector: 'ClipPath',
+	imports: [Inset, Circle, Polygon],
+	templateUrl: './clip-path.html',
+	styleUrl: './clip-path.scss'
 })
-export class StyleViewer {
+export class ClipPath {
     generalService = inject(General);
     cpOptions = ClipPathOptions
     stlOptions = StyleOptions
@@ -46,13 +42,33 @@ export class StyleViewer {
             example: 'polygon(50% 15%, 90% 48%, 72% 90%, 28% 90%, 10% 48%)',
             explanation: '', 
         },
-        // {mode: 'path', desc: '', syntax: '', stxExplanation: '', value: ''},
-        // {mode: 'rect', desc: '', syntax: '', stxExplanation: '', value: ''},
-        // {mode: 'xywh', desc: '', syntax: '', stxExplanation: '', value: ''},
-        // {mode: 'shape', desc: '', syntax: '', stxExplanation: '', value: ''},
+        {
+            mode: 'path', 
+            value: ClipPathOptions.path,
+            example: 'polygon(50% 15%, 90% 48%, 72% 90%, 28% 90%, 10% 48%)',
+            explanation: '', 
+        },
+        {
+            mode: 'rect', 
+            value: ClipPathOptions.rect,
+            example: 'polygon(50% 15%, 90% 48%, 72% 90%, 28% 90%, 10% 48%)',
+            explanation: '', 
+        },
+        {
+            mode: 'xywh', 
+            value: ClipPathOptions.xywh,
+            example: 'polygon(50% 15%, 90% 48%, 72% 90%, 28% 90%, 10% 48%)',
+            explanation: '', 
+        },
+        {
+            mode: 'shape', 
+            value: ClipPathOptions.shape,
+            example: 'polygon(50% 15%, 90% 48%, 72% 90%, 28% 90%, 10% 48%)',
+            explanation: '', 
+        },
     ]
 
-    constructor(private domSanitizer: DomSanitizer){
+    constructor(){
         this.generalService.clipPath.subscribe((value) => {
             this.clipPath = value
         })

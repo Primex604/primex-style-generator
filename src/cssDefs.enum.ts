@@ -24,6 +24,12 @@ export const clipPathExamples = {
     inset: '20%'
 }
 
+export enum StyleOptions{
+    clipPath,
+    filter,
+    mask
+}
+
 export enum ClipPathOptions {
     inset,
     circle,

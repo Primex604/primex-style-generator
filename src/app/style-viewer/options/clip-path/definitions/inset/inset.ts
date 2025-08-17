@@ -98,16 +98,39 @@ export class Inset {
 		value: InsetArgs.border_radius
 	}
 
-	resetValues(){
+	resetLengthSides(){
+		this.length_sides.top.value.set(0)
+		this.length_sides.top.percentage.set(0)
 		this.length_sides.top.compValue = ''
+		this.length_sides.right.value.set(0)
+		this.length_sides.right.percentage.set(0)
 		this.length_sides.right.compValue = ''
+		this.length_sides.bottom.value.set(0)
+		this.length_sides.bottom.percentage.set(0)
 		this.length_sides.bottom.compValue = ''
+		this.length_sides.left.value.set(0)
+		this.length_sides.left.percentage.set(0)
 		this.length_sides.left.compValue = ''
-		this.border_lengths.top_left.compValue = ''
-		this.border_lengths.top_right.compValue = ''
-		this.border_lengths.bottom_right.compValue = ''
-		this.border_lengths.bottom_left.compValue = ''
+	}
 
+	resetBorderLengths(){
+		this.border_lengths.top_left.value.set(0)
+		this.border_lengths.top_left.percentage.set(0)
+		this.border_lengths.top_left.compValue = ''
+		this.border_lengths.top_right.value.set(0)
+		this.border_lengths.top_right.percentage.set(0)
+		this.border_lengths.top_right.compValue = ''
+		this.border_lengths.bottom_right.value.set(0)
+		this.border_lengths.bottom_right.percentage.set(0)
+		this.border_lengths.bottom_right.compValue = ''
+		this.border_lengths.bottom_left.value.set(0)
+		this.border_lengths.bottom_left.percentage.set(0)
+		this.border_lengths.bottom_left.compValue = ''
+	}
+
+	resetValues(){
+		this.resetLengthSides()
+		this.resetBorderLengths()
         this.generalService.setLength(clipPathExamples.inset)
 	}
 

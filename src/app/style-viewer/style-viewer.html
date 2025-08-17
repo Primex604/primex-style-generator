@@ -15,26 +15,23 @@
         </div>
     </div>
     <div class="right-column">
-        <div class="options">
-            @for (option of clipPathOptions; track $index) {
-                <div class="option" (click)="onClick(option.value)">
-                    <h3>{{option.mode}}</h3>
-                    <div [class]="'sample ' + option.mode "></div>
+        <Header></Header>
+        @for (option of styleOptions; track $index) {
+            <Expandable [title]="option.text">
+                <div body>
+                    @switch (option.value) {
+                        @case (stlOptions.clipPath) {
+                            <ClipPath/>
+                        }
+                        @case (stlOptions.filter) {
+                            <Filter/>
+                        }
+                        @case (stlOptions.mask) {
+                            mask
+                        }
+                    }
                 </div>
-            }
-        </div>
-        <div class="option-desc">
-            @switch (mode) {
-                @case (cpOptions.inset) {
-                    <Inset/>
-                }
-                @case (cpOptions.circle) {
-                    <Circle/>
-                }
-                @case (cpOptions.polygon) {
-                    <Polygon/>
-                }
-            }
-        </div>
+            </Expandable>
+        }
     </div>
 </div>

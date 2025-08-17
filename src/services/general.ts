@@ -20,7 +20,6 @@ export class General {
     public position = this._position.asObservable()
 
     setClipPath(value: string){
-        console.log(value)
         this._clipPath.next(value)
     }
 

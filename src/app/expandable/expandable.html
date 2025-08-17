@@ -1,0 +1,15 @@
+<button 
+    type="button" 
+    class="collapse-btn" 
+    [ngClass]="{'active': expanded}" 
+    (click)="expand()"
+    >
+        {{ title() }}
+</button>
+<section class="content" [ngClass]="{'expanded': expanded}">
+    <ng-container *ngTemplateOutlet="body"></ng-container>
+</section>
+
+<ng-template #body>
+    <ng-content select="[body]"></ng-content>
+</ng-template>

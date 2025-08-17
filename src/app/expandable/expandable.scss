@@ -1,0 +1,46 @@
+.collapse-btn {
+    color: #57b9a6;
+    background-color: transparent;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    font-size: 15px;
+    border-bottom: 2px solid #57b9a6;
+    text-transform: uppercase;
+}
+
+.collapse-btn::after {
+    transition: content 0.25s ease-in;
+    content: '	\2B9E';
+    float: right;
+}
+
+.active::after {
+    transition: content 0.25s ease-in;
+    content: "	\2B9F";
+    float: right;
+}
+
+.active,
+.collapse-btn:hover {
+    transition: background-color 0.25s, border-bottom 0.25s;
+    background-color: rgba(black, 0.1);
+    border-bottom: 2px solid rgba(#57b9a6, 0.5);
+}
+
+.content {
+    padding: 0 18px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.25s ease-out;
+}
+
+.expanded {
+    transition: max-height 0.25s ease-out;
+    max-height: 100vh;
+}
