@@ -1,0 +1,75 @@
+.options{
+    margin: 50px;
+    position: relative;
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    justify-content: space-around;
+
+    .option{
+        height: 120px;
+        width: 100px;
+        border: 1px solid black;
+        border-radius: 10px;
+        margin-bottom: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        cursor: pointer;
+
+        h3{
+            width: 100%;
+            margin: 0;
+            margin-bottom: 10px;
+            border-bottom: 1px solid black;
+        }
+        .sample{
+            position: relative;
+            height: 65%;
+            width: 75%;
+            border: 1px solid black;
+        }
+        .blur{
+            background-color: purple;
+            filter: blur(1px);
+        }
+        .brightness{
+            background-color: purple;
+            filter: brightness(0.5);
+        }
+        .contrast{
+            background-color: purple;
+            filter: contrast(0.5);
+        }
+        .drop-shadow{
+            background-color: purple;
+            filter: drop-shadow(2px 4px 6px black);
+        }
+        .grayscale{
+            background-color: purple;
+            filter: grayscale(0.9);
+        }
+        .hue-rotate{
+            background-color: purple;
+            filter: hue-rotate(45deg);
+        }
+        .invert{
+            background-color: purple;
+            filter: invert(1);
+        }
+        .opacity{
+            background-color: purple;
+            filter: opacity(0.2);
+        }
+        .sepia{
+            background-color: purple;
+            filter: sepia(1);
+        }
+        .saturate{
+            background-color: purple;
+            filter: saturate(0.4);
+        }
+    }
+    :hover{
+        background-color: rgba($color: darkgray, $alpha: 0.5);
+    }
+}

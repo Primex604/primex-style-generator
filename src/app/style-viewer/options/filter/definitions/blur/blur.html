@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="explanation">{{definition}}</div>
+    <div class="definition">
+        <div class="syntax">
+            <p>Blur(</p>
+            <button
+                (click)="argSelect()"
+                [ngClass]="{'selected': ''}"
+            >
+                {{length.syntax}}
+            </button>
+            {{optional}}
+            <p>)</p>
+        </div>
+        <button class="reset" (click)="resetValues()"> Reset</button>
+    </div>
+    @if (level_1) {
+        <div class="syntax">
+            <p>length: </p>
+            <input 
+                id="length"
+                type="number" 
+                min="0" 
+                max="100" 
+                [(ngModel)]="length.value" 
+                (change)="onUnitChange()"
+            />
+            <select 
+                id="length-type" 
+                [(ngModel)]="length.lengthUnit" 
+                (change)="onUnitChange()"
+            >
+                @for (comp of length.composition; track $index) {
+                    <option [value]="comp.unit">{{comp.unit}}</option>
+                }
+            </select>
+        </div>
+    }
+</div>

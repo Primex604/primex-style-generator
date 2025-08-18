@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { NgStyle } from '@angular/common';
-import { General } from 'services/general';
+import { ClipPathService, FilterService } from 'services';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { ClipPathOptions, clipPathExamples, StyleOptions } from 'cssDefs.enum';
 import { Header } from 'app/header/header';
@@ -14,11 +14,13 @@ import { ClipPath, Filter } from './options';
     styleUrl: './style-viewer.scss'
 })
 export class StyleViewer {
-    generalService = inject(General);
+    clipPathService = inject(ClipPathService);
+    filterService = inject(FilterService)
     cpOptions = ClipPathOptions
     stlOptions = StyleOptions
 
     clipPath: string = 'circle(40%)';
+    filter: string = '';
     mode: number = 0;
 
     clipPathOptions = [
@@ -53,8 +55,11 @@ export class StyleViewer {
     ]
 
     constructor(private domSanitizer: DomSanitizer){
-        this.generalService.clipPath.subscribe((value) => {
+        this.clipPathService.clipPath.subscribe((value) => {
             this.clipPath = value
+        })
+        this.filterService.filter.subscribe((value) => {
+            this.filter = value
         })
     }
 
@@ -66,7 +71,7 @@ export class StyleViewer {
 
     onClick(option: any){
         this.mode = option
-        this.generalService.setClipPathOption(option)
+        this.clipPathService.setClipPathOption(option)
         this.clipPath = this.clipPathOptions[option].example
     }
 }

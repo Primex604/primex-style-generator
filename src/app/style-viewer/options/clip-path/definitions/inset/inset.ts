@@ -2,7 +2,7 @@ import { Component, inject, signal } from '@angular/core';
 import { NgClass } from '@angular/common';
 import { InsetArgs, InsetLengthType, lengthTypes, figureSides, figureCorners, clipPathExamples } from 'cssDefs.enum';
 import { FormsModule } from '@angular/forms';
-import { General } from 'services/general';
+import { ClipPathService } from 'services';
 
 @Component({
 	selector: 'Inset',
@@ -14,7 +14,7 @@ export class Inset {
 	// definition = `<inset()> = inset( <length-percentage>{1,4} [ round <'border-radius'> ]? )  `
 	definition = 'Defines a rectangle at the specified inset distances from each side of the reference box.';
 	optional = '?';
-	generalService = inject(General)
+	clipPathService = inject(ClipPathService)
 	insetArgs = InsetArgs
 	insetLengthTypes = InsetLengthType
 	figureSides = figureSides
@@ -131,7 +131,7 @@ export class Inset {
 	resetValues(){
 		this.resetLengthSides()
 		this.resetBorderLengths()
-        this.generalService.setLength(clipPathExamples.inset)
+        this.clipPathService.setLength(clipPathExamples.inset)
 	}
 
 	argSelect(option: number){
@@ -171,6 +171,6 @@ export class Inset {
 			newLength += ' round ' + border_radius
 		}
 		
-        this.generalService.setLength(newLength)
+        this.clipPathService.setLength(newLength)
 	}
 }

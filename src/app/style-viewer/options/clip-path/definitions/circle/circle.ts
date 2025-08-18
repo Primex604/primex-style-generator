@@ -1,5 +1,5 @@
 import { Component, effect, inject, signal } from '@angular/core';
-import { General } from 'services/general';
+import { ClipPathService } from 'services';
 import { NgClass } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CircleArgs, RadialSizeTypes, RadialExtentType, lengthTypes, CirclePosition } from 'cssDefs.enum';
@@ -16,7 +16,7 @@ export class Circle {
     optional = '?'
     circleArgs = CircleArgs;
     radialSizeTypes = RadialSizeTypes;
-    generalService = inject(General);
+    clipPathService = inject(ClipPathService);
 
     length = signal(10);
     lengthUnit = lengthTypes[0].unit
@@ -121,7 +121,7 @@ export class Circle {
 
     onChange(value: any){
         let newLength = '' + value + this.lengthUnit
-        this.generalService.setLength(newLength)
+        this.clipPathService.setLength(newLength)
     }
     
     onUnitSelect(value: any){
@@ -130,6 +130,6 @@ export class Circle {
 
     selectOption(value: any){
         this.currentLvl2 = value.value
-        this.generalService.setRadialExtent(value.syntax)
+        this.clipPathService.setRadialExtent(value.syntax)
     }
 }

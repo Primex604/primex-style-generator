@@ -5,7 +5,7 @@ import { ClipPathOptions ,RadialSizeTypes } from 'cssDefs.enum';
 @Injectable({
     providedIn: 'root'
 })
-export class General {
+export class ClipPathService {
     private _clipPath = new BehaviorSubject('')
     public clipPath = this._clipPath.asObservable()
     private _clipPathOption = new BehaviorSubject(-1)
@@ -19,17 +19,17 @@ export class General {
     private _position = new BehaviorSubject('');
     public position = this._position.asObservable()
 
-    setClipPath(value: string){
+    setClipPath(value: string) {
         this._clipPath.next(value)
     }
 
-    setClipPathOption(value: number){
+    setClipPathOption(value: number) {
         this._clipPathOption.next(value)
     }
 
-    setCircle(radialSize: number){
+    setCircle(radialSize: number) {
         let rsValue = ''
-        switch(radialSize){
+        switch (radialSize) {
             case RadialSizeTypes.radial_extent:
                 rsValue = this._radialExtent.value
                 break;
@@ -39,22 +39,22 @@ export class General {
             case RadialSizeTypes.length_percentage:
                 rsValue = this._length.value
                 break;
-            
+
         }
         let position = this._position.value
         this.setClipPath('circle(' + rsValue + ' ' + position + ')')
     }
 
-    setInset(){
+    setInset() {
         let length_percentage = this._length.value
         let border_radius = this._borderRadius.value
 
         this.setClipPath('inset(' + length_percentage + border_radius + ')')
     }
 
-    setLength(value: string){
+    setLength(value: string) {
         this._length.next(value)
-        switch(this._clipPathOption.value){
+        switch (this._clipPathOption.value) {
             case ClipPathOptions.inset:
                 this.setInset()
                 break
@@ -64,11 +64,9 @@ export class General {
         }
     }
 
-    setRadialExtent(value: string){
+    setRadialExtent(value: string) {
         this._radialExtent.next(value)
         console.log(value)
         this.setCircle(RadialSizeTypes.radial_extent)
     }
-
-
 }

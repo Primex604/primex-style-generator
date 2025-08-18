@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { clipPathExamples, ClipPathOptions, StyleOptions } from 'cssDefs.enum';
-import { General } from 'services/general';
+import { ClipPathService } from 'services';
 import { Inset, Circle, Polygon } from "./definitions";
 
 @Component({
@@ -10,9 +10,8 @@ import { Inset, Circle, Polygon } from "./definitions";
 	styleUrl: './clip-path.scss'
 })
 export class ClipPath {
-    generalService = inject(General);
+    clipPathService = inject(ClipPathService);
     cpOptions = ClipPathOptions
-    stlOptions = StyleOptions
 
     clipPath: string = 'circle(40%)';
     mode: number = 0;
@@ -69,7 +68,7 @@ export class ClipPath {
     ]
 
     constructor(){
-        this.generalService.clipPath.subscribe((value) => {
+        this.clipPathService.clipPath.subscribe((value) => {
             this.clipPath = value
         })
     }
@@ -82,7 +81,7 @@ export class ClipPath {
 
     onClick(option: any){
         this.mode = option
-        this.generalService.setClipPathOption(option)
+        this.clipPathService.setClipPathOption(option)
         this.clipPath = this.clipPathOptions[option].example
     }
 }

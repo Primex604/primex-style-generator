@@ -41,6 +41,24 @@ export enum ClipPathOptions {
     xywh
 }
 
+export enum FilterOptions{
+    blur,
+    brightness,
+    contrast,
+    drop_shadow,
+    grayscale,
+    hue_rotate,
+    invert,
+    opacity,
+    sepia,
+    saturate
+}
+
+export enum BrightnessArgs{
+    number,
+    percentage
+}
+
 export enum CircleArgs{
     radial_size,
     position

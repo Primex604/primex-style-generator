@@ -1,0 +1,53 @@
+<div class="container">
+    <div class="explanation">{{definition}}</div>
+    <div class="definition">
+        <div class="syntax">
+            <p>Brightness( [</p>
+            <button
+                (click)="argSelect(number.argValue)"
+                [ngClass]="{'selected': currentArg == number.argValue}"
+            >
+                {{number.syntax}}
+            </button>
+            <span>{{' | '}}</span>
+            <button
+                (click)="argSelect(percentage.argValue)"
+                [ngClass]="{'selected': currentArg == percentage.argValue}"
+            >
+                {{percentage.syntax}}
+            </button>
+            <span>] {{optional}}</span>
+            <p>)</p>
+        </div>
+        <button class="reset" (click)="resetValues()"> Reset</button>
+    </div>
+    @if (level_1) {
+        <div class="syntax">
+            @switch (currentArg) {
+                @case (brightArgs.number) {
+                    <p>number: </p>
+                    <input 
+                        id="number"
+                        type="number" 
+                        min="0" 
+                        step="0.1"
+                        max="5" 
+                        [(ngModel)]="number.value" 
+                        (change)="onUnitChange(number)"
+                    />
+                }
+                @case (brightArgs.percentage) {
+                    <p>percentage: </p>
+                    <input 
+                        id="percentage"
+                        type="number" 
+                        min="0" 
+                        max="500" 
+                        [(ngModel)]="percentage.value" 
+                        (change)="onUnitChange(percentage)"
+                    />
+                }
+            }
+        </div>
+    }
+</div>

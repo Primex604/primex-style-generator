@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { General } from './general';
+import { Clippath } from './clippath';
 
-describe('General', () => {
-  let service: General;
+describe('Clippath', () => {
+  let service: Clippath;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(General);
+    service = TestBed.inject(Clippath);
   });
 
   it('should be created', () => {
