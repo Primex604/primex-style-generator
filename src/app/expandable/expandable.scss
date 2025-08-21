@@ -34,13 +34,14 @@
 }
 
 .content {
-    padding: 0 18px;
+    padding: 0;
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.25s ease-out;
+    transition: max-height 0.25s ease-out, padding 0.25s ease-out;
 }
 
 .expanded {
-    transition: max-height 0.25s ease-out;
+    padding: 18px;
+    transition: max-height 0.25s ease-out, padding 0.25s ease-out;
     max-height: 100vh;
 }

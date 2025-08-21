@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { ClipPathOptions ,RadialSizeTypes } from 'cssDefs.enum';
+import { BasicShapeOptions ,RadialSizeTypes } from 'cssDefs.enum';
 
 @Injectable({
     providedIn: 'root'
@@ -55,10 +55,10 @@ export class ClipPathService {
     setLength(value: string) {
         this._length.next(value)
         switch (this._clipPathOption.value) {
-            case ClipPathOptions.inset:
+            case BasicShapeOptions.inset:
                 this.setInset()
                 break
-            case ClipPathOptions.circle:
+            case BasicShapeOptions.circle:
                 this.setCircle(RadialSizeTypes.length)
                 break;
         }
@@ -66,7 +66,6 @@ export class ClipPathService {
 
     setRadialExtent(value: string) {
         this._radialExtent.next(value)
-        console.log(value)
         this.setCircle(RadialSizeTypes.radial_extent)
     }
 }

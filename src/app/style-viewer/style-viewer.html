@@ -1,38 +1,20 @@
 <div class="container">
-    <div class="left-column">
-        <div class="grid">
-            <p>x: 0, y: 0</p>
-            <p>x: 100, y: 0</p>
-            <p>x: 100, y: 100</p>
-            <p>x: 0, y: 100</p>
-            <div class="border">
-                <div class="editable-div" [ngStyle]="
-                    {
-                        '--clipPath': clipPath,
-                        '--filter': filter
+    <Header></Header>
+    @for (option of styleOptions; track $index) {
+        <Expandable [title]="option.text">
+            <div body>
+                @switch (option.value) {
+                    @case (stlOptions.clipPath) {
+                        <ClipPath/>
                     }
-                "></div>
+                    @case (stlOptions.filter) {
+                        <Filter/>
+                    }
+                    @case (stlOptions.mask) {
+                        mask
+                    }
+                }
             </div>
-        </div>
-    </div>
-    <div class="right-column">
-        <Header></Header>
-        @for (option of styleOptions; track $index) {
-            <Expandable [title]="option.text">
-                <div body>
-                    @switch (option.value) {
-                        @case (stlOptions.clipPath) {
-                            <ClipPath/>
-                        }
-                        @case (stlOptions.filter) {
-                            <Filter/>
-                        }
-                        @case (stlOptions.mask) {
-                            mask
-                        }
-                    }
-                </div>
-            </Expandable>
-        }
-    </div>
+        </Expandable>
+    }
 </div>

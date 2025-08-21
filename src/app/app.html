@@ -1,3 +1,25 @@
 <main>
-    <StyleViewer></StyleViewer>
+    <div class="container">
+        <div class="left-column">
+            <span>test</span>
+            <div class="grid">
+                <p>x: 0, y: 0</p>
+                <p>x: 100, y: 0</p>
+                <p>x: 100, y: 100</p>
+                <p>x: 0, y: 100</p>
+                <div class="border">
+                    <div class="editable-div" [ngStyle]="
+                        {
+                            '--clipPath': clipPath,
+                            '--filter': filter,
+                            '--mask': mask
+                        }
+                    "></div>
+                </div>
+            </div>
+        </div>
+        <div class="right-column">
+            <StyleViewer></StyleViewer>
+        </div>
+    </div>
 </main>

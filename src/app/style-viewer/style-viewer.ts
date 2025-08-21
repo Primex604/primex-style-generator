@@ -1,15 +1,13 @@
 import { Component, inject } from '@angular/core';
-import { NgStyle } from '@angular/common';
 import { ClipPathService, FilterService } from 'services';
-import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { ClipPathOptions, clipPathExamples, StyleOptions } from 'cssDefs.enum';
+import { ClipPathOptions, clipPathExamples, StyleOptions, BasicShapeOptions } from 'cssDefs.enum';
 import { Header } from 'app/header/header';
 import { Expandable } from 'app/expandable/expandable';
 import { ClipPath, Filter } from './options';
 
 @Component({
     selector: 'StyleViewer',
-    imports: [NgStyle, Header, Expandable, ClipPath, Filter],
+    imports: [Header, Expandable, ClipPath, Filter],
     templateUrl: './style-viewer.html',
     styleUrl: './style-viewer.scss'
 })
@@ -26,25 +24,25 @@ export class StyleViewer {
     clipPathOptions = [
         {
             mode: 'inset',
-            value: ClipPathOptions.inset,
+            value: BasicShapeOptions.inset,
             example: 'inset(' + clipPathExamples.inset + ')',
             explanation: ''
         },
         {
             mode: 'circle', 
-            value: ClipPathOptions.circle,
+            value: BasicShapeOptions.circle,
             example: 'circle(40%)',
             explanation: 'When defining the circle, you can add the optional argument <radial-size> (which is the overall radius of the clipping) and/or the optional argument [at <position>] (which indicates that the radius should expand outwards with the coordinates given by <position> as its center.)',
         },
         {
             mode: 'ellipse', 
-            value: ClipPathOptions.ellipse, 
+            value: BasicShapeOptions.ellipse, 
             example: 'ellipse(20% 40%)', 
             explanation: ''
         },
         {
             mode: 'polygon', 
-            value: ClipPathOptions.polygon,
+            value: BasicShapeOptions.polygon,
             example: 'polygon(50% 15%, 90% 48%, 72% 90%, 28% 90%, 10% 48%)',
             explanation: '', 
         },
@@ -53,15 +51,6 @@ export class StyleViewer {
         // {mode: 'xywh', desc: '', syntax: '', stxExplanation: '', value: ''},
         // {mode: 'shape', desc: '', syntax: '', stxExplanation: '', value: ''},
     ]
-
-    constructor(private domSanitizer: DomSanitizer){
-        this.clipPathService.clipPath.subscribe((value) => {
-            this.clipPath = value
-        })
-        this.filterService.filter.subscribe((value) => {
-            this.filter = value
-        })
-    }
 
     styleOptions = [
         {text: 'clip-path', value: StyleOptions.clipPath, explanation: 'clip path something somethin'},

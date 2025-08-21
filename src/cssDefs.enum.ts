@@ -30,7 +30,13 @@ export enum StyleOptions{
     mask
 }
 
-export enum ClipPathOptions {
+export enum ClipPathOptions{
+    clip_source,
+    basic_shape,
+    geometry_box
+}
+
+export enum BasicShapeOptions {
     inset,
     circle,
     ellipse,
