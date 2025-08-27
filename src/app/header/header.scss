@@ -12,12 +12,16 @@ header{
 
         .image{
             position: relative;
-            i{
+            svg{
                 bottom: 15px;
                 right: 15px;
-                font-size: 25px;
+                width: 25%;
                 position: absolute;
             }
+        }
+
+        h2{
+            width: 20%;
         }
     }
 

@@ -13,12 +13,12 @@ import { ClipPathService } from 'services';
 export class Inset {
 	// definition = `<inset()> = inset( <length-percentage>{1,4} [ round <'border-radius'> ]? )  `
 	definition = 'Defines a rectangle at the specified inset distances from each side of the reference box.';
-	optional = '?';
 	clipPathService = inject(ClipPathService)
 	insetArgs = InsetArgs
 	insetLengthTypes = InsetLengthType
 	figureSides = figureSides
 	figureCorners = figureCorners
+    number_sides = signal(1)
 
 	level_1 = false
 	currentArg = -1
@@ -137,6 +137,10 @@ export class Inset {
 	argSelect(option: number){
         this.level_1 = true
         this.currentArg = option
+    }
+
+    onNumberSidesChange(){
+        console.log(this.number_sides())
     }
 
 	onUnitChange(value: any, argType: number, percentage: boolean = false){

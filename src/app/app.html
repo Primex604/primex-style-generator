@@ -1,7 +1,9 @@
 <main>
     <div class="container">
         <div class="left-column">
-            <span>test</span>
+            <div class="viewer-title">
+                <span>Style Viewer</span>
+            </div>
             <div class="grid">
                 <p>x: 0, y: 0</p>
                 <p>x: 100, y: 0</p>
@@ -19,6 +21,12 @@
             </div>
         </div>
         <div class="right-column">
+            <Header></Header>
+            <div class="styles">
+                <span>{{'clip-path: ' + clipPath || '-'}}</span>
+                <span>{{'filter: ' + filter || '-'}}</span>
+                <span>{{'mask: ' + mask || '-'}}</span>
+            </div>
             <StyleViewer></StyleViewer>
         </div>
     </div>

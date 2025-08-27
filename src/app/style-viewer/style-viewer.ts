@@ -1,13 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { ClipPathService, FilterService } from 'services';
 import { ClipPathOptions, clipPathExamples, StyleOptions, BasicShapeOptions } from 'cssDefs.enum';
-import { Header } from 'app/header/header';
 import { Expandable } from 'app/expandable/expandable';
 import { ClipPath, Filter } from './options';
 
 @Component({
     selector: 'StyleViewer',
-    imports: [Header, Expandable, ClipPath, Filter],
+    imports: [Expandable, ClipPath, Filter],
     templateUrl: './style-viewer.html',
     styleUrl: './style-viewer.scss'
 })

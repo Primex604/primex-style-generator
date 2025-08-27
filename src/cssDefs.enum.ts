@@ -20,6 +20,8 @@ export const figureCorners = [
     {corner: 'bottom_left'}
 ]
 
+export const optional = '?'
+
 export const clipPathExamples = {
     inset: '20%'
 }
@@ -111,4 +113,14 @@ export enum PolygonArgs{
 export enum PolygonLengthType{
     length,
     length_percentage
+}
+
+export enum PathArgs{
+    fill_rule,
+    string
+}
+
+export enum fillRuleType{
+    nonzero,
+    evenodd
 }

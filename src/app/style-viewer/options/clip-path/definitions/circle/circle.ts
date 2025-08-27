@@ -2,7 +2,7 @@ import { Component, effect, inject, signal } from '@angular/core';
 import { ClipPathService } from 'services';
 import { NgClass } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { CircleArgs, RadialSizeTypes, RadialExtentType, lengthTypes, CirclePosition } from 'cssDefs.enum';
+import { CircleArgs, RadialSizeTypes, RadialExtentType, lengthTypes, CirclePosition, optional } from 'cssDefs.enum';
 
 @Component({
     selector: 'Circle',

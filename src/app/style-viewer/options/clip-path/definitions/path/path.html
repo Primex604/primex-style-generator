@@ -1,1 +1,77 @@
-<p>path works!</p>
+<div class="container">
+    <div class="explanation">{{definition}}</div>
+    <div class="syntax">
+        <p>path(</p>
+        <button 
+            (click)="argSelect(fillRule.value)"
+            [ngClass]="{'selected': currentArg == fillRule.value}"
+        >
+            {{fillRule.syntax}}
+        </button>{{optional}}
+        <p> ,</p>
+        <button 
+            (click)="argSelect(string.value)"
+            [ngClass]="{'selected': currentArg == string.value}"
+        >
+            {{string.syntax}}
+        </button>
+        <p>)</p>
+    </div>
+    @if (level_1) {
+        @switch (currentArg) {
+            @case (pathArgs.fill_rule) {
+                <div class="syntax">
+                    <p>{{fillRule.syntax + ':'}}</p>
+                    @for (rule of fillRule.composition; track $index) {
+                        <button 
+                            (click)="ruleSelect(fillRule.composition[$index].value)"
+                            [ngClass]="{'selected': currentRule == fillRule.composition[$index].value}"
+                        >
+                            {{fillRule.composition[$index].syntax}}
+                        </button>
+                        @if (fillRule.composition.length - 1 !== $index) {
+                            <p>{{' | '}}</p>
+                        }
+                    }
+                </div>
+            }
+            @case (pathArgs.string) {
+                <div class="syntax">
+                    <div class="pathdef">
+                        <span>{{string.syntax + ': '}}</span>
+                        <div class="path">
+                            <input [(ngModel)]="string.path" (ngModelChange)="createPath()">
+                            <button>
+                                {{'Create path'}}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="syntax">
+                    <span>{{'Point aid : '}}</span>
+                    <div class="inputs">
+                        <span>{{' X pos:'}} 
+                            <input 
+                                id="Xpos" 
+                                type="number" 
+                                min="0" 
+                                max="150" 
+                            >
+                        </span>
+                        <span>{{' Y pos:'}} 
+                            <input
+                                id="Ypos"
+                                type="number" 
+                                min="0" 
+                                max="150" 
+                            >
+                        </span>
+                        <button (click)="addPath()">
+                            {{'Add point'}}
+                        </button>
+                    </div>
+                </div>
+            }
+        }
+    }
+</div>

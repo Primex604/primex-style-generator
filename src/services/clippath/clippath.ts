@@ -68,4 +68,9 @@ export class ClipPathService {
         this._radialExtent.next(value)
         this.setCircle(RadialSizeTypes.radial_extent)
     }
+
+    setPath(value: string){
+        let path = 'path("' + value + '")'
+        this.setClipPath(path)
+    }
 }

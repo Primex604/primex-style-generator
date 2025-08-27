@@ -1,1 +1,21 @@
-<p>ellipse works!</p>
+<div class="container">
+    <div class="explanation">{{definition}}</div>
+    <div class="syntax">
+        <p>Ellipse(</p>
+        <button 
+            (click)="argSelect(0)"
+            [ngClass]="{'selected': currentArg}"
+        >
+            {{radial_size.syntax}}
+        </button>{{optional}}
+        <p> [ at </p>
+        <button 
+            (click)="argSelect(0)"
+            [ngClass]="{'selected': currentArg}"
+        >
+            {{position.syntax}}
+        </button>
+        ] {{optional}}
+        <p>)</p>
+    </div>
+</div>

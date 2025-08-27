@@ -1,16 +1,14 @@
 .collapse-btn {
-    color: #57b9a6;
-    background-color: transparent;
+    color: rgba($color: orange, $alpha: 0.7);
+    background-color: rgba($color: black, $alpha: 0.7);
     cursor: pointer;
     padding: 18px;
     width: 100%;
     border: none;
     text-align: left;
     outline: none;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
     font-size: 15px;
-    border-bottom: 2px solid #57b9a6;
+    border-bottom: 2px solid rgba($color: orange, $alpha: 0.7);
     text-transform: uppercase;
 }
 
@@ -29,11 +27,12 @@
 .active,
 .collapse-btn:hover {
     transition: background-color 0.25s, border-bottom 0.25s;
-    background-color: rgba(black, 0.1);
-    border-bottom: 2px solid rgba(#57b9a6, 0.5);
+    background-color: rgba(black, 0.6);
+    border-bottom: 2px solid rgba(orange, 0.5);
 }
 
 .content {
+    background-color: rgba($color: black, $alpha: 0.3);
     padding: 0;
     max-height: 0;
     overflow: hidden;

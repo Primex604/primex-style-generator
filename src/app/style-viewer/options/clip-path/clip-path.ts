@@ -13,14 +13,16 @@ import { NgClass } from '@angular/common';
 export class ClipPath {
     clipPathService = inject(ClipPathService);
     shapes = BasicShapeOptions
-    definition = `clip-path = <clip-source> | [ <basic-shape> || <geometry-box> ] | none`;
+    definition = 'The clip-path CSS property creates a clipping region that sets what part of an element should be shown. Parts that are inside the region are shown, while those outside are hidden.' 
     selectedArg = -1
+    compatibility = 'https://caniuse.com/?search=clip-path'
 
     clipPath = {
         clipSource: {
             syntax: '<clip-source>',
             value: ClipPathOptions.clip_source,
-            id: ''
+            id: '',
+            explanation: 'The clip source property uses not an image url but an identifier (id) of a SVG clip-path as source in order to apply the clip-path style onto the container element'
         },
         basicShape: {
             syntax: '<basic-shape',
@@ -28,7 +30,8 @@ export class ClipPath {
         },
         geometryBox: {
             syntax: '<geometry-box>',
-            value: ClipPathOptions.geometry_box
+            value: ClipPathOptions.geometry_box,
+            explanation: ''
         }
     };
     mode: number = 0;

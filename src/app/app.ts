@@ -3,10 +3,11 @@ import { StyleViewer } from "./style-viewer/style-viewer";
 import { ClipPathService, FilterService } from 'services';
 import { NgStyle } from '@angular/common';
 import { MaskService } from 'services';
+import { Header } from './header/header';
 
 @Component({
     selector: 'app-root',
-    imports: [StyleViewer, NgStyle],
+    imports: [StyleViewer, NgStyle, Header],
     templateUrl: './app.html',
     styleUrl: './app.scss'
 })
