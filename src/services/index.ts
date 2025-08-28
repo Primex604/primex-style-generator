@@ -1,3 +1,5 @@
+export * from './dimensions/dimension'
+export * from './colors/color'
 export * from './clippath/clippath'
 export * from './filter/filter'
 export * from './mask/mask'

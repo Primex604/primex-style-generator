@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { Mask } from './mask';
+import { MaskService } from './mask';
 
 describe('Mask', () => {
-  let service: Mask;
+  let service: MaskService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(Mask);
+    service = TestBed.inject(MaskService);
   });
 
   it('should be created', () => {

@@ -2,11 +2,11 @@ import { Component, inject } from '@angular/core';
 import { ClipPathService, FilterService } from 'services';
 import { ClipPathOptions, clipPathExamples, StyleOptions, BasicShapeOptions } from 'cssDefs.enum';
 import { Expandable } from 'app/expandable/expandable';
-import { ClipPath, Filter } from './options';
+import { Dimensions, Colors, ClipPath, Filter, Mask } from './options';
 
 @Component({
     selector: 'StyleViewer',
-    imports: [Expandable, ClipPath, Filter],
+    imports: [Expandable, Dimensions, Colors, ClipPath, Filter, Mask],
     templateUrl: './style-viewer.html',
     styleUrl: './style-viewer.scss'
 })
@@ -52,7 +52,9 @@ export class StyleViewer {
     ]
 
     styleOptions = [
-        {text: 'clip-path', value: StyleOptions.clipPath, explanation: 'clip path something somethin'},
+        {text: 'dimensions', value: StyleOptions.dimensions, explanation: ''},
+        {text: 'colors', value: StyleOptions.colors, explanation: ''},
+        {text: 'clip-path', value: StyleOptions.clipPath, explanation: ''},
         {text: 'filter', value: StyleOptions.filter, explanation: ''},
         {text: 'mask', value:StyleOptions.mask, explanation: ''}
     ]

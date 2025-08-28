@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { StyleViewer } from "./style-viewer/style-viewer";
-import { ClipPathService, FilterService } from 'services';
+import { ClipPathService, ColorService, Dimension, DimensionService, FilterService } from 'services';
 import { NgStyle } from '@angular/common';
 import { MaskService } from 'services';
 import { Header } from './header/header';
@@ -14,10 +14,13 @@ import { Header } from './header/header';
 export class App {
     protected title = 'primex-style-generator';
 
+    dimensionService = inject(DimensionService)
+    colorService = inject(ColorService)
     clipPathService = inject(ClipPathService);
     filterService = inject(FilterService);
     maskService = inject(MaskService);
 
+    dimensions: Dimension = {height: '', width: '', padding: '', margin: ''}
     clipPath: string = 'circle(40%)';
     filter: string = '';
     mask: string = '';
@@ -33,5 +36,9 @@ export class App {
         this.maskService.mask.subscribe((value) => {
             this.mask = value
         })
+        this.dimensionService.dimensions.subscribe((value) => {
+            this.dimensions = value
+        })
+
     }
 }

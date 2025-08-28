@@ -3,6 +3,12 @@
         <Expandable [title]="option.text">
             <div body>
                 @switch (option.value) {
+                    @case (stlOptions.dimensions) {
+                        <Dimensions/>
+                    }
+                    @case (stlOptions.colors) {
+                        <Colors/>
+                    }
                     @case (stlOptions.clipPath) {
                         <ClipPath/>
                     }
@@ -10,7 +16,7 @@
                         <Filter/>
                     }
                     @case (stlOptions.mask) {
-                        mask
+                        <Mask/>
                     }
                 }
             </div>

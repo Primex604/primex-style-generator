@@ -12,6 +12,10 @@
                 <div class="border">
                     <div class="editable-div" [ngStyle]="
                         {
+                            '--height': dimensions.height,
+                            '--width': dimensions.width,
+                            '--padding': dimensions.padding,
+                            '--margin': dimensions.margin,
                             '--clipPath': clipPath,
                             '--filter': filter,
                             '--mask': mask
@@ -23,6 +27,10 @@
         <div class="right-column">
             <Header></Header>
             <div class="styles">
+                <span>{{'height: ' + dimensions.height || '-'}}</span>
+                <span>{{'width: ' + dimensions.width || '-'}}</span>
+                <span>{{'padding: ' + dimensions.padding || '-'}}</span>
+                <span>{{'margin: ' + dimensions.margin || '-'}}</span>
                 <span>{{'clip-path: ' + clipPath || '-'}}</span>
                 <span>{{'filter: ' + filter || '-'}}</span>
                 <span>{{'mask: ' + mask || '-'}}</span>

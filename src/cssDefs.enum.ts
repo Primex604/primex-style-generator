@@ -27,6 +27,8 @@ export const clipPathExamples = {
 }
 
 export enum StyleOptions{
+    dimensions,
+    colors,
     clipPath,
     filter,
     mask

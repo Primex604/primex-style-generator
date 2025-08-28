@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { Clippath } from './clippath';
+import { ClipPathService } from './clippath';
 
 describe('Clippath', () => {
-  let service: Clippath;
+  let service: ClipPathService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(Clippath);
+    service = TestBed.inject(ClipPathService);
   });
 
   it('should be created', () => {
