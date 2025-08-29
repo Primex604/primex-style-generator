@@ -1,1 +1,110 @@
-<p>dimensions works!</p>
+<div class="dim-buttons">
+    <span>Basic dimension modifiers :</span>
+    @for (dim of dimensions; track $index) {
+        <button 
+            [ngClass]="{'selected': currentDim == dim.value}"
+            (click)="selectDimension(dim.value)">{{dim.dimension}}</button>
+    }
+</div>
+@switch (currentDim) {
+    @case (dimensionTypes.size) {
+        <div class="dim-type">
+            <div class="sides">
+                <span>{{'Height : '}}</span>
+                <input 
+                    id="height" 
+                    type="number" 
+                    min="0" 
+                    max="105" 
+                    [(ngModel)]="sizes.height.value" 
+                    (change)="setHeight()"
+                />
+                <select
+                    id="height-unit" 
+                    [(ngModel)]="sizes.height.unit" 
+                    (change)="setHeight()"
+                >
+                    @for (type of lengthTypes; track $index) {
+                        <option>{{type.unit}}</option>
+                    }
+                    <option>%</option>
+                </select>
+            </div>
+            <div class="sides">
+                <span>{{'Width : '}}</span>
+                <input 
+                    id="width" 
+                    type="number" 
+                    min="0" 
+                    max="105" 
+                    [(ngModel)]="sizes.width.value" 
+                    (change)="setWidth()"
+                />
+                <select
+                    id="width-unit" 
+                    [(ngModel)]="sizes.width.unit" 
+                    (change)="setWidth()"
+                >
+                    @for (type of lengthTypes; track $index) {
+                        <option>{{type.unit}}</option>
+                    }
+                    <option>%</option>
+                </select>
+            </div>
+        </div>
+    }
+    @case (dimensionTypes.padding) {
+        <div class="dim-type">
+            @for (figSide of figSides; track $index) {
+                <div class="sides">
+                    <span>{{'padding-' + [figSide.side]}}</span>
+                    <input 
+                        [id]="'padding-' + [figSide.side]" 
+                        type="number" 
+                        min="0" 
+                        max="105" 
+                        [(ngModel)]="padding_sides[figSide.side].value" 
+                        (change)="setPadding(figSide.side)"
+                    />
+                    <select
+                        [id]="'padding-' + [figSide.side] + '-unit'" 
+                        [(ngModel)]="padding_sides[figSide.side].unit" 
+                        (change)="setPadding(figSide.side)"
+                    >
+                        @for (type of lengthTypes; track $index) {
+                            <option>{{type.unit}}</option>
+                        }
+                        <option>%</option>
+                    </select>
+                </div>
+            }
+        </div>
+    }
+    @case (dimensionTypes.margin) {
+        <div class="dim-type">
+            @for (figSide of figSides; track $index) {
+                <div class="sides">
+                    <span>{{'margin-' + [figSide.side]}}</span>
+                    <input 
+                        [id]="'margin-' + [figSide.side]" 
+                        type="number" 
+                        min="0" 
+                        max="105" 
+                        [(ngModel)]="margin_sides[figSide.side].value" 
+                        (change)="setMargin(figSide.side)"
+                    />
+                    <select
+                        [id]="'margin-' + [figSide.side] + '-unit'" 
+                        [(ngModel)]="margin_sides[figSide.side].unit" 
+                        (change)="setMargin(figSide.side)"
+                    >
+                        @for (type of lengthTypes; track $index) {
+                            <option>{{type.unit}}</option>
+                        }
+                        <option>%</option>
+                    </select>
+                </div>
+            }
+        </div>
+    }
+}

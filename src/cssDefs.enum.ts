@@ -34,6 +34,12 @@ export enum StyleOptions{
     mask
 }
 
+export enum DimensionTypes{
+    size,
+    padding,
+    margin
+}
+
 export enum ClipPathOptions{
     clip_source,
     basic_shape,

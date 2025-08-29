@@ -12,14 +12,8 @@ export interface Dimension{
     providedIn: 'root'
 })
 export class DimensionService {
-    private _height = new BehaviorSubject('');
-    public height = this._height.asObservable();
-    private _width = new BehaviorSubject('');
-    public width = this._width.asObservable();
-    private _padding = new BehaviorSubject('');
-    public padding = this._padding.asObservable();
-    private _margin = new BehaviorSubject('');
-    public margin = this._margin.asObservable();
+    private _exampleText = new BehaviorSubject(false);
+    public exampleText = this._exampleText.asObservable();
     private _dimensions = new BehaviorSubject<Dimension>({
         height: '',
         width: '',
@@ -28,20 +22,28 @@ export class DimensionService {
     })
     public dimensions = this._dimensions.asObservable()
 
+    showPaddingText(value: boolean){
+        this._exampleText.next(value)
+    }
+
     setHeight(value: string){
-        let updated = <Dimension> new Object({...this.dimensions, height: value})
+        let updated = <Dimension> new Object({...this._dimensions.getValue(), height: value})
+        console.log(this._dimensions, updated)
         this._dimensions.next(updated)
     }
 
     setWidth(value: string){
-        this._width.next(value)
+        let updated = <Dimension> new Object({...this._dimensions.getValue(), width: value})
+        this._dimensions.next(updated)
     }
 
     setPadding(value: string){
-        this._padding.next(value)
+        let updated = <Dimension> new Object({...this._dimensions.getValue(), padding: value})
+        this._dimensions.next(updated)
     }
 
     setMargin(value: string){
-        this._margin.next(value)
+        let updated = <Dimension> new Object({...this._dimensions.getValue(), margin: value})
+        this._dimensions.next(updated)
     }
 }

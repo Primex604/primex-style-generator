@@ -20,20 +20,31 @@
                             '--filter': filter,
                             '--mask': mask
                         }
-                    "></div>
+                    ">
+                        @if (showExampleText) {
+                            <p>{{'Padding/Margin example text'}}</p>
+                        }
+                    </div>
                 </div>
             </div>
         </div>
         <div class="right-column">
             <Header></Header>
             <div class="styles">
-                <span>{{'height: ' + dimensions.height || '-'}}</span>
-                <span>{{'width: ' + dimensions.width || '-'}}</span>
-                <span>{{'padding: ' + dimensions.padding || '-'}}</span>
-                <span>{{'margin: ' + dimensions.margin || '-'}}</span>
-                <span>{{'clip-path: ' + clipPath || '-'}}</span>
-                <span>{{'filter: ' + filter || '-'}}</span>
-                <span>{{'mask: ' + mask || '-'}}</span>
+                <span>{{'.container {'}}</span>
+                    <span>{{'height: ' + dimensions.height || '-'}}</span>
+                    <span>{{'width: ' + dimensions.width || '-'}}</span>
+                    <span>{{'clip-path: ' + clipPath || '-'}}</span>
+                    <span>{{'filter: ' + filter || '-'}}</span>
+                    <span>{{'mask: ' + mask || '-'}}</span>
+                    <span></span>
+                    <div class="styles">
+                        <span>{{'p {' + (!showExampleText ? '   //hidden' : '')}}</span>
+                            <span>{{'   padding: ' + dimensions.padding || '-'}}</span>
+                            <span>{{'margin: ' + dimensions.margin || '-'}}</span>
+                        <span>{{'}'}}</span>
+                    </div>
+                <span>{{'}'}}</span>
             </div>
             <StyleViewer></StyleViewer>
         </div>

@@ -21,12 +21,16 @@ export class App {
     maskService = inject(MaskService);
 
     dimensions: Dimension = {height: '', width: '', padding: '', margin: ''}
-    clipPath: string = 'circle(40%)';
+    clipPath: string = '';
     filter: string = '';
     mask: string = '';
     mode: number = 0;
+    showExampleText: boolean = false
 
     constructor(){
+        this.dimensionService.exampleText.subscribe((value) => {
+            this.showExampleText = value
+        })
         this.clipPathService.clipPath.subscribe((value) => {
             this.clipPath = value
         })
