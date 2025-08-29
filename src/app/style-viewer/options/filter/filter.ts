@@ -82,6 +82,5 @@ export class Filter {
 
     onClick(option: any){
         this.mode = option
-        console.log(this.mode, this.ftrOptions.brightness)
     }
 }

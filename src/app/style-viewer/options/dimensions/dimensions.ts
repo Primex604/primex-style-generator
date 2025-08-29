@@ -113,22 +113,28 @@ export class Dimensions {
     setPadding(side: string){
         this.padding_sides[side].compValue = this.padding_sides[side].value() + this.padding_sides[side].unit
 
-        let padding = ''
-        for(side in this.padding_sides){
-            padding += this.padding_sides[side].compValue + ' '
-        }
+        this.dimService.setPadding(this.padding_sides[side].compValue, side)
+    }
 
-        this.dimService.setPadding(padding)
+    resetPadding(side: string){
+        this.padding_sides[side].value.set(0)
+        this.padding_sides[side].unit = lengthTypes[0].unit
+        this.padding_sides[side].compValue = ''
+
+        this.dimService.setPadding(this.padding_sides[side].compValue, side)
     }
 
     setMargin(side: string){
         this.margin_sides[side].compValue = this.margin_sides[side].value() + this.margin_sides[side].unit
 
-        let margin = ''
-        for(side in this.margin_sides){
-            margin += this.margin_sides[side].compValue + ' '
-        }
+        this.dimService.setMargin(this.margin_sides[side].compValue, side)
+    }
 
-        this.dimService.setMargin(margin)
+    resetMargin(side: string){
+        this.margin_sides[side].value.set(0)
+        this.margin_sides[side].unit = lengthTypes[0].unit
+        this.margin_sides[side].compValue = ''
+
+        this.dimService.setMargin(this.padding_sides[side].compValue, side)
     }
 }

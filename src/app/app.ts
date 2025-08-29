@@ -20,7 +20,23 @@ export class App {
     filterService = inject(FilterService);
     maskService = inject(MaskService);
 
-    dimensions: Dimension = {height: '', width: '', padding: '', margin: ''}
+    dimensions: Dimension = {
+        height: '', 
+        width: '', 
+        padding: {
+            top: '',
+            right: '',
+            bottom: '',
+            left: ''
+        }, margin: {
+            top: '',
+            right: '',
+            bottom: '',
+            left: ''
+        }
+    }
+    paddingSimple: string = '';
+    marginSimple: string = '';
     clipPath: string = '';
     filter: string = '';
     mask: string = '';
@@ -40,8 +56,20 @@ export class App {
         this.maskService.mask.subscribe((value) => {
             this.mask = value
         })
-        this.dimensionService.dimensions.subscribe((value) => {
+        this.dimensionService.dimensions.subscribe((value:any) => {
             this.dimensions = value
+
+            let padding = ''
+            for(let pad in value.padding){
+                padding += (value.padding[pad] ? value.padding[pad] : 0) + ' '
+            }
+            this.paddingSimple = padding
+
+            let margin = ''
+            for(let mar in value.margin){
+                margin += (value.margin[mar] ? value.margin[mar] : 0) + ' '
+            }
+            this.marginSimple = margin
         })
 
     }

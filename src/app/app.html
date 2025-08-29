@@ -14,8 +14,14 @@
                         {
                             '--height': dimensions.height,
                             '--width': dimensions.width,
-                            '--padding': dimensions.padding,
-                            '--margin': dimensions.margin,
+                            '--padding-top': dimensions.padding.top,
+                            '--padding-right': dimensions.padding.right,
+                            '--padding-bottom': dimensions.padding.bottom,
+                            '--padding-left': dimensions.padding.left,
+                            '--margin-top': dimensions.margin.top,
+                            '--margin-right': dimensions.margin.right,
+                            '--margin-bottom': dimensions.margin.bottom,
+                            '--margin-left': dimensions.margin.left,
                             '--clipPath': clipPath,
                             '--filter': filter,
                             '--mask': mask
@@ -40,8 +46,8 @@
                     <span></span>
                     <div class="styles">
                         <span>{{'p {' + (!showExampleText ? '   //hidden' : '')}}</span>
-                            <span>{{'   padding: ' + dimensions.padding || '-'}}</span>
-                            <span>{{'margin: ' + dimensions.margin || '-'}}</span>
+                            <span>{{'padding: ' + paddingSimple || '-'}}</span>
+                            <span>{{'margin: ' + marginSimple || '-'}}</span>
                         <span>{{'}'}}</span>
                     </div>
                 <span>{{'}'}}</span>

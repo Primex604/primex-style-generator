@@ -4,8 +4,18 @@ import { BehaviorSubject } from 'rxjs';
 export interface Dimension{
     height: string,
     width: string,
-    padding: string,
-    margin: string
+    padding: {
+        top: string,
+        right: string,
+        bottom: string,
+        left: string
+    },
+    margin: {
+        top: string,
+        right: string,
+        bottom: string,
+        left: string
+    }
 }
 
 @Injectable({
@@ -17,8 +27,18 @@ export class DimensionService {
     private _dimensions = new BehaviorSubject<Dimension>({
         height: '',
         width: '',
-        padding: '',
-        margin: ''
+        padding: {
+            top: '',
+            right: '',
+            bottom: '',
+            left: ''
+        },
+        margin: {
+            top: '',
+            right: '',
+            bottom: '',
+            left: ''
+        }
     })
     public dimensions = this._dimensions.asObservable()
 
@@ -28,7 +48,6 @@ export class DimensionService {
 
     setHeight(value: string){
         let updated = <Dimension> new Object({...this._dimensions.getValue(), height: value})
-        console.log(this._dimensions, updated)
         this._dimensions.next(updated)
     }
 
@@ -37,13 +56,13 @@ export class DimensionService {
         this._dimensions.next(updated)
     }
 
-    setPadding(value: string){
-        let updated = <Dimension> new Object({...this._dimensions.getValue(), padding: value})
+    setPadding(value: string, side: string){
+        let updated = <Dimension> new Object({...this._dimensions.getValue(), padding: {...this._dimensions.getValue().padding, [side]: value}})
         this._dimensions.next(updated)
     }
 
-    setMargin(value: string){
-        let updated = <Dimension> new Object({...this._dimensions.getValue(), margin: value})
+    setMargin(value: string, side: string){
+        let updated = <Dimension> new Object({...this._dimensions.getValue(), margin: {...this._dimensions.getValue().margin, [side]: value}})
         this._dimensions.next(updated)
     }
 }

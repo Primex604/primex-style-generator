@@ -1,3 +1,22 @@
+button{
+    border-radius: 10px;
+    margin: 0px 5px;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+    font-family: 'Courier New', Courier, monospace;
+    color: rgba($color: aqua, $alpha: 0.6);
+    border-right: 1px solid rgba($color: aqua, $alpha: 0.6);
+    border-left: 1px solid rgba($color: aqua, $alpha: 0.6);
+}
+
+button:not(.selected):hover{
+    background-color: rgba($color: aqua, $alpha: 0.1);
+}
+.selected, button:not(.selected):active{
+    background-color: rgba($color: aqua, $alpha: 0.3);
+}
+
 .dim-buttons{
     display: flex;
     flex-direction: row;
@@ -8,29 +27,18 @@
     border: 1px solid rgba($color: orange, $alpha: 0.7);
     color: rgba($color: orange, $alpha: 0.7);
     background-color: rgba($color: black, $alpha: 0.5);
-
-    button{
-        border-radius: 10px;
-        margin: 0px 5px;
-        border: none;
-        cursor: pointer;
-        background-color: transparent;
-        font-family: 'Courier New', Courier, monospace;
-        color: rgba($color: aqua, $alpha: 0.6);
-        border-right: 1px solid rgba($color: aqua, $alpha: 0.6);
-        border-left: 1px solid rgba($color: aqua, $alpha: 0.6);
-    }
-    button:not(.selected):hover{
-        background-color: rgba($color: aqua, $alpha: 0.1);
-    }
-    .selected{
-        background-color: rgba($color: aqua, $alpha: 0.3);
-    }
 }
 
 .dim-type{
-    display: flex;
+    display: grid;
     justify-content: space-around;
+    grid-template-columns: auto auto;
+    font-family: 'Courier New', Courier, monospace;
+    background-color: rgba($color: black, $alpha: 0.6);
+    color: rgba($color: orange, $alpha: 0.7);
+    padding: 10px 0px;
+    border: 1px solid black;
+    border-radius: 10px;
 
     input{
         width: 50px;
@@ -39,8 +47,11 @@
     .sides{
         display: flex;
         flex-direction: row;
+        justify-content: space-around;
+        margin-bottom: 10px;
 
         span{
+            width: 120px;
             font-size: 16px;
             color: rgba($color: orange, $alpha: 0.7);
             margin-right: 10px;
