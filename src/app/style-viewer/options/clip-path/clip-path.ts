@@ -87,12 +87,6 @@ export class ClipPath {
         },
     ]
 
-    styleOptions = [
-        {text: 'clip-path', value: StyleOptions.clipPath, explanation: 'clip path something somethin'},
-        {text: 'filter', value: StyleOptions.filter, explanation: ''},
-        {text: 'mask', value:StyleOptions.mask, explanation: ''}
-    ]
-
     argSelect(option: number){
         this.selectedArg = option
     }
