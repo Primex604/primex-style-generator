@@ -1,1 +1,44 @@
-<p>hue-rotate works!</p>
+<div class="container">
+    <div class="explanation">{{definition}}</div>
+    <div class="definition">
+        <div class="syntax">
+            <p>{{'hue-rotate( ['}}</p>
+            <button
+                (click)="argSelect(angle.argValue)"
+                [ngClass]="{'selected': currentArg == angle.argValue}"
+            >
+                {{angle.syntax}}
+            </button>
+            <span>{{' | '}}</span>
+            <button
+                (click)="argSelect(zero.argValue)"
+                [ngClass]="{'selected': currentArg == zero.argValue}"
+            >
+                {{zero.syntax}}
+            </button>
+            <span>] {{optional}}</span>
+            <p>{{')'}}</p>
+        </div>
+    </div>
+    @switch (currentArg) {
+        @case (hueRotateArgs.angle) {
+            <div class="syntax">
+                <p>{{angle.syntax + ': '}}</p>
+                <input 
+                    id="number"
+                    type="number" 
+                    min="-360"
+                    max="360" 
+                    [(ngModel)]="angle.value" 
+                    (change)="onUnitChange()"
+                />
+                <p>{{'deg'}}</p>
+            </div>
+        }
+        @case (hueRotateArgs.zero) {
+            <div class="syntax">
+                <p>{{`This applies 0 (or 0deg) rotation to the element, effectively not making any changes to it's hue. Use it here as a soft reset button`}}</p>
+            </div>
+        }
+    }
+</div>

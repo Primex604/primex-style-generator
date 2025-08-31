@@ -44,7 +44,7 @@ export class FilterService {
     }
 
     setHueRotate(angle: string){
-        let hueRotate = 'hue-rotate(' + + ')';
+        let hueRotate = 'hue-rotate(' + angle + ')';
         this.setFilter(hueRotate)
     }
 

@@ -90,6 +90,11 @@ export enum DropShadowArgs{
     length
 }
 
+export enum HueRotateArgs{
+    angle,
+    zero
+}
+
 export enum CircleArgs{
     radial_size,
     position
