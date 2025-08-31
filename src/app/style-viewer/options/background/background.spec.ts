@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Colors } from './colors';
+import { Background } from './background';
 
-describe('Colors', () => {
-  let component: Colors;
-  let fixture: ComponentFixture<Colors>;
+describe('Background', () => {
+  let component: Background;
+  let fixture: ComponentFixture<Background>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Colors]
+      imports: [Background]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(Colors);
+    fixture = TestBed.createComponent(Background);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

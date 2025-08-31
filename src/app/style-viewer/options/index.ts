@@ -1,5 +1,5 @@
 export * from './dimensions/dimensions'
-export * from './colors/colors'
+export * from './background/background'
 export * from './clip-path/clip-path'
 export * from './filter/filter'
 export * from './mask/mask'

@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { StyleOptions } from 'cssDefs.enum';
 import { Expandable } from 'app/expandable/expandable';
-import { Dimensions, Colors, ClipPath, Filter, Mask } from './options';
+import { Dimensions, Background, ClipPath, Filter, Mask } from './options';
 
 @Component({
     selector: 'StyleViewer',
-    imports: [Expandable, Dimensions, Colors, ClipPath, Filter, Mask],
+    imports: [Expandable, Dimensions, Background, ClipPath, Filter, Mask],
     templateUrl: './style-viewer.html',
     styleUrl: './style-viewer.scss'
 })
