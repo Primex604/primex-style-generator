@@ -5,14 +5,14 @@ import { AmountType } from 'cssDefs.enum';
 import { FilterService } from 'services';
 
 @Component({
-    selector: 'Grayscale',
+    selector: 'Invert',
     imports: [NgClass, FormsModule],
-    templateUrl: './grayscale.html',
-    styleUrl: './grayscale.scss'
+    templateUrl: './invert.html',
+    styleUrl: './invert.scss'
 })
-export class Grayscale {
+export class Invert {
     filterService = inject(FilterService)
-    grayscaleArgs = AmountType
+    invertArgs = AmountType
     optional = '?';
     definition = ''
     level_1 = false
@@ -36,15 +36,14 @@ export class Grayscale {
     }
 
     resetValues() {
-        this.number.value.set(1)
-        this.percentage.value.set(100)
-        this.filterService.setGrayscale('')
+        this.number.value.set(0)
+        this.percentage.value.set(0)
+        this.filterService.setInvert('')
     }
 
     onUnitChange(arg: any) {
         let compValue = '' + arg.value()
         if(arg.argValue == AmountType.percentage) compValue += '%'
-        this.filterService.setGrayscale(compValue)
+        this.filterService.setInvert(compValue)
     }
-
 }

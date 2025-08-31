@@ -2,7 +2,7 @@
     <div class="explanation">{{definition}}</div>
     <div class="definition">
         <div class="syntax">
-            <p>{{'contrast( ['}}</p>
+            <p>{{'sepia( ['}}</p>
             <button
                 (click)="argSelect(number.argValue)"
                 [ngClass]="{'selected': currentArg == number.argValue}"
@@ -24,7 +24,7 @@
     @if (level_1) {
         <div class="syntax">
             @switch (currentArg) {
-                @case (contrastArgs.number) {
+                @case (sepiaArgs.number) {
                     <p>{{'number: '}}</p>
                     <input 
                         id="number"
@@ -36,7 +36,7 @@
                         (change)="onUnitChange(number)"
                     />
                 }
-                @case (contrastArgs.percentage) {
+                @case (sepiaArgs.percentage) {
                     <p>{{'percentage: '}}</p>
                     <input 
                         id="percentage"

@@ -1,1 +1,81 @@
-<p>drop-shadow works!</p>
+<div class="container">
+    <div class="explanation">{{definition}}</div>
+    <div class="definition">
+        <div class="syntax">
+            <p>{{'grayscale( ['}}</p>
+            <button
+                (click)="argSelect(color.argValue)"
+                [ngClass]="{'selected': currentArg == color.argValue}"
+            >
+                {{color.syntax}}
+            </button>
+            <span>{{' | '}}</span>
+            <button
+                (click)="argSelect(length.argValue)"
+                [ngClass]="{'selected': currentArg == length.argValue}"
+            >
+                {{length.syntax}}
+            </button>
+            <span>] {{optional}}</span>
+            <p>{{')'}}</p>
+        </div>
+        <button class="reset" (click)="resetValues()">{{'Reset'}}</button>
+    </div>
+    @if (level_1) {
+        @switch (currentArg) {
+            @case (dropShadowArgs.color) {
+                    <div class="syntax color">
+                        <div class="color-picker">
+                            <p>{{'color: [ ' + (color.value() || '--') + ' ]'}}</p>
+                            <input 
+                                id="color-input"
+                                type="color" 
+                                (change)="onUnitChange()"
+                                [(ngModel)]="color.value"
+                            />
+                            <p>{{'alpha: '}}</p>
+                            <input 
+                                id="number"
+                                type="number" 
+                                min="0" 
+                                step="0.1"
+                                max="5" 
+                                [(ngModel)]="color.alpha" 
+                                (change)="onUnitChange()"
+                            />
+                        </div>
+                        <div class="color-defs">
+                            <span>{{'RGBA - R: [' + rgba.red + '], G: [' + rgba.green + '], B: [' + rgba.blue + '], alpha:[' + rgba.alpha +']'}}</span>
+                            <span>{{'HSL - Hue: [' + hsl.hue + '], Saturation: [' + hsl.saturation + ']%, Ligthness: [' + hsl.lightness + ']%)'}}</span>
+                            <span>{{'You can check more definitions '}}<button><a [href]="colorResource" target="_blank">{{'here'}}</a></button></span>
+                        </div>
+                    </div>
+                }
+                @case (dropShadowArgs.length) {
+                    <div class="syntax">
+                        <p>{{'length: '}}</p>
+                        @for (leng of length.composition; track $index) {
+                            <span>{{leng.lengthType}}</span>
+                            <input 
+                                [id]="leng.lengthType"
+                                type="number" 
+                                min="0" 
+                                max="500" 
+                                (change)="onUnitChange()"
+                                [(ngModel)]="leng.value"
+                            />
+                            <select 
+                                [(ngModel)]="leng.unit" 
+                                (change)="onUnitChange()"
+                            >
+                                @for (type of lengthTypes; track $index) {
+                                    <option [value]="type.unit">{{type.unit}}</option>
+                                }
+                                <option>{{'%'}}</option>
+                            </select>
+                        }
+                    </div>
+                }
+            }
+    }
+</div>

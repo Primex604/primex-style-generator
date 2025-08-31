@@ -1,18 +1,91 @@
-<div class="options">
-    @for (option of filterOptions; track $index) {
-        <div class="option" (click)="onClick(option.value)">
-            <h3>{{option.mode}}</h3>
-            <div [class]="'sample ' + option.mode "></div>
+<div class="def-container">
+    <div class="container">
+        <div class="syntax">
+            <span>{{'filter = '}}</span>
+            <button 
+                (click)="argSelect(ftrArgs.none)" 
+                [ngClass]="{'selected': selectedArg == ftrArgs.none}"
+            >
+                {{'none'}}
+            </button>
+            <span>{{' | '}}</span>
+            <button 
+                (click)="argSelect(filterValueList.value)"
+                [ngClass]="{'selected': selectedArg == ftrArgs.filterValueList}"
+            >
+                {{filterValueList.syntax}}
+            </button>
+        </div>
+        @if(selectedArg === ftrArgs.filterValueList){
+            <div class="syntax">
+                <span>{{filterValueList.syntax + ' = [ '}}</span>
+                <button 
+                    (click)="selectFilterValue(filterValueList.composition.filterFunction.value)" 
+                    [ngClass]="{'selected': selectedFilterValue == filterValueList.composition.filterFunction.value}"
+                >
+                    {{filterValueList.composition.filterFunction.syntax}}
+                </button>
+                <span>{{' | '}}</span>
+                <button 
+                    (click)="selectFilterValue(filterValueList.composition.url.value)"
+                    [ngClass]="{'selected': selectedFilterValue == filterValueList.composition.url.value}"
+                >
+                    {{filterValueList.composition.url.syntax}}
+                </button>
+                <span>{{' ]+'}}</span>
+            </div>
+        }
+    </div>
+    <div class="compatibility">
+        <a [href]="compatibility" target="_blank">Compatibility</a>
+    </div>
+</div>
+@switch (selectedFilterValue) {
+    @case (ftrValues.filterFunction) {
+        <div class="options">
+            @for (option of filterOptions; track $index) {
+                <div class="option" (click)="selectFilter(option.value)" [ngClass]="{'selected': option.value == filter}">
+                    <h3>{{option.mode}}</h3>
+                    <div [class]="'sample ' + option.mode "></div>
+                </div>
+            }
+        </div>
+        <div class="option-desc">
+            @switch (filter) {
+                @case (ftrOptions.blur) {
+                    <Blur/>
+                }
+                @case (ftrOptions.brightness) {
+                    <Brightness/>
+                }
+                @case (ftrOptions.contrast) {
+                    <Contrast/>
+                }
+                @case (ftrOptions.drop_shadow) {
+                    <Dropshadow/>
+                }
+                @case (ftrOptions.grayscale) {
+                    <Grayscale/>
+                }
+                @case (ftrOptions.hue_rotate) {
+                    <HueRotate/>
+                }
+                @case (ftrOptions.invert) {
+                    <Invert/>
+                }
+                @case (ftrOptions.opacity) {
+                    <Opacity/>
+                }
+                @case (ftrOptions.sepia) {
+                    <Sepia/>
+                }
+                @case (ftrOptions.saturate) {
+                    <Saturate/>
+                }
+            }
         </div>
     }
-</div>
-<div class="option-desc">
-    @switch (mode) {
-        @case (ftrOptions.blur) {
-            <Blur/>
-        }
-        @case (ftrOptions.brightness) {
-            <Brightness/>
-        }
+    @case (ftrValues.url) {
+
     }
-</div>
+}

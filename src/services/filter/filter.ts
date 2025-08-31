@@ -8,8 +8,14 @@ export class FilterService {
     private _filter = new BehaviorSubject('')
     public filter = this._filter.asObservable()
 
+    //TODO: change _filter definition to an object with multiple filters since multiple can be applied at once and correct behavior to support change
+
     private setFilter(value: string){
         this._filter.next(value)
+    }
+
+    resetFilter(){
+        this._filter.next('none')
     }
 
     setBlur(length: string){
@@ -27,8 +33,8 @@ export class FilterService {
         this.setFilter(contrast)
     }
 
-    setDropShadow(){
-        let dropShadow = 'drop-shadow(' + + ')';
+    setDropShadow(value: string){
+        let dropShadow = 'drop-shadow(' + value + ')';
         this.setFilter(dropShadow)
     }
 
@@ -40,5 +46,25 @@ export class FilterService {
     setHueRotate(angle: string){
         let hueRotate = 'hue-rotate(' + + ')';
         this.setFilter(hueRotate)
+    }
+
+    setInvert(number: string){
+        let invert = 'invert(' + number + ')';
+        this.setFilter(invert)
+    }
+
+    setOpacity(number: string){
+        let opacity = 'opacity(' + number + ')';
+        this.setFilter(opacity)
+    }
+
+    setSepia(number: string){
+        let sepia = 'sepia(' + number + ')';
+        this.setFilter(sepia)
+    }
+
+    setSaturate(number: string){
+        let saturate = 'saturate(' + number + ')';
+        this.setFilter(saturate)
     }
 }

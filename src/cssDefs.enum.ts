@@ -57,6 +57,16 @@ export enum BasicShapeOptions {
     xywh
 }
 
+export enum FilterArgs{
+    none,
+    filterValueList
+}
+
+export enum FilterValueList{
+    filterFunction,
+    url
+}
+
 export enum FilterOptions{
     blur,
     brightness,
@@ -70,9 +80,14 @@ export enum FilterOptions{
     saturate
 }
 
-export enum BrightnessArgs{
+export enum AmountType{
     number,
     percentage
+}
+
+export enum DropShadowArgs{
+    color,
+    length
 }
 
 export enum CircleArgs{

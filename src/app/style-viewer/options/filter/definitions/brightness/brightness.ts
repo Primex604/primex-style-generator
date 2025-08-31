@@ -2,7 +2,7 @@ import { Component, inject, signal } from '@angular/core';
 import { FilterService } from 'services';
 import { NgClass } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { BrightnessArgs } from 'cssDefs.enum';
+import { AmountType } from 'cssDefs.enum';
 
 @Component({
     selector: 'Brightness',
@@ -13,7 +13,7 @@ import { BrightnessArgs } from 'cssDefs.enum';
 export class Brightness {
     //( [ <number> | <percentage> ]? )  
     filterService = inject(FilterService)
-    brightArgs = BrightnessArgs
+    brightArgs = AmountType
     optional = '?';
     definition = ''
     level_1 = false
@@ -22,13 +22,13 @@ export class Brightness {
     number = {
         syntax: '<number>',
         value: signal(1),
-        argValue: BrightnessArgs.number
+        argValue: AmountType.number
     }
 
     percentage = {
         syntax: '<percentage>',
         value: signal(100),
-        argValue: BrightnessArgs.percentage
+        argValue: AmountType.percentage
     }
 
     argSelect(value: number) {
@@ -39,12 +39,12 @@ export class Brightness {
     resetValues() {
         this.number.value.set(1)
         this.percentage.value.set(100)
-        this.filterService.setBlur('')
+        this.filterService.setBrightness('')
     }
 
     onUnitChange(arg: any) {
         let compValue = '' + arg.value()
-        if(arg.argValue == BrightnessArgs.percentage) compValue += '%'
+        if(arg.argValue == AmountType.percentage) compValue += '%'
         this.filterService.setBrightness(compValue)
     }
 }

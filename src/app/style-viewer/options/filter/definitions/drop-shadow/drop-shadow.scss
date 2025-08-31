@@ -1,0 +1,85 @@
+.container{
+    border: 1px solid black;
+    border-radius: 10px;
+        font-family: 'Courier New', Courier, monospace;
+        background-color: rgba($color: black, $alpha: 0.6);
+        color: rgba($color: orange, $alpha: 0.7);
+
+    .definition{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 5px 15px;
+    }
+    
+    .syntax{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 5px 15px;
+        padding: 5px 15px;
+
+        button{
+            border-radius: 10px;
+            margin: 0px 5px;
+            border: none;
+            cursor: pointer;
+            background-color: transparent;
+            font-family: 'Courier New', Courier, monospace;
+            color: rgba($color: aqua, $alpha: 0.6);
+            border-right: 1px solid rgba($color: aqua, $alpha: 0.6);
+            border-left: 1px solid rgba($color: aqua, $alpha: 0.6);
+        }
+        button:not(.selected):hover{
+            background-color: rgba($color: aqua, $alpha: 0.1);
+        }
+        .selected{
+            background-color: rgba($color: aqua, $alpha: 0.3);
+        }
+    }
+
+    .color{
+        flex-direction: column;
+        .color-picker{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-around;
+        }
+        .color-defs{
+            display: flex;
+            flex-direction: column;
+
+            a{
+                text-decoration: none;
+                color: rgba($color: aqua, $alpha: 0.3);
+            }
+        }
+    }
+
+    .explanation{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        border-bottom: 1px solid black;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        box-shadow: 1px 0px 10px black;
+
+        padding: 5px 15px;
+    }
+
+    .reset{
+        border-radius: 10px;
+        margin: 0px 5px;
+        border: 1px solid rgba($color: orange, $alpha: 0.7);;
+        cursor: pointer;
+        background-color: transparent;
+        font-family: 'Courier New', Courier, monospace;
+        color: rgba($color: orange, $alpha: 0.7);    
+    }
+    .reset:hover{
+        background-color: rgba($color: orange, $alpha: 0.2);
+    }
+}

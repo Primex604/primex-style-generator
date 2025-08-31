@@ -5,14 +5,14 @@ import { AmountType } from 'cssDefs.enum';
 import { FilterService } from 'services';
 
 @Component({
-    selector: 'Grayscale',
+    selector: 'Sepia',
     imports: [NgClass, FormsModule],
-    templateUrl: './grayscale.html',
-    styleUrl: './grayscale.scss'
+    templateUrl: './sepia.html',
+    styleUrl: './sepia.scss'
 })
-export class Grayscale {
+export class Sepia {
     filterService = inject(FilterService)
-    grayscaleArgs = AmountType
+    sepiaArgs = AmountType
     optional = '?';
     definition = ''
     level_1 = false
@@ -20,13 +20,13 @@ export class Grayscale {
 
     number = {
         syntax: '<number>',
-        value: signal(0),
+        value: signal(1),
         argValue: AmountType.number
     }
 
     percentage = {
         syntax: '<percentage>',
-        value: signal(0),
+        value: signal(100),
         argValue: AmountType.percentage
     }
 
@@ -38,13 +38,12 @@ export class Grayscale {
     resetValues() {
         this.number.value.set(1)
         this.percentage.value.set(100)
-        this.filterService.setGrayscale('')
+        this.filterService.setSaturate('')
     }
 
     onUnitChange(arg: any) {
         let compValue = '' + arg.value()
         if(arg.argValue == AmountType.percentage) compValue += '%'
-        this.filterService.setGrayscale(compValue)
+        this.filterService.setSaturate(compValue)
     }
-
 }
